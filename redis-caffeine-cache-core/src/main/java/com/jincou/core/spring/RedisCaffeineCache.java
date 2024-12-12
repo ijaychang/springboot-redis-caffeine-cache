@@ -124,7 +124,7 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 
 	@Override
 	public void put(Object key, Object value) {
-		//如果value不能放空，但实际value为空，那么把数据情掉就好。
+		//如果value不能放空，但实际value为空，那么把数据清掉就好。
 		if (!super.isAllowNullValues() && value == null) {
 			this.evict(key);
 			return;
