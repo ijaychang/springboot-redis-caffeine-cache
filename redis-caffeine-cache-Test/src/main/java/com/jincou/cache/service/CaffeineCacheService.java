@@ -42,7 +42,7 @@ public class CaffeineCacheService {
      * 获取或加载缓存项
      * <p>
      */
-    @Cacheable(key = "'cache_user_id_' + #userId", value = "userCache")
+    @Cacheable(value = "user_cache", key = "'cache_user_id:' + #userId")
     public UserDTO queryUser(String userId) {
         UserDTO userDTO = userMap.get(userId);
         try {
@@ -64,7 +64,7 @@ public class CaffeineCacheService {
      * sync=false，是通过get(Object key)来获取缓存项，由于没有valueLoader（加载缓存项的具体逻辑），所以CaffeineCache在定时刷新过期缓存时，缓存项过期则会被淘汰。
      * <p>
      */
-    @Cacheable(value = "userCache", key = "#userId", sync = true)
+    @Cacheable(value = "user_cache", key = "#userId", sync = true)
     public List<UserDTO> queryUserSyncList(String userId) {
         UserDTO userDTO = userMap.get(userId);
         List<UserDTO> list = new ArrayList();
@@ -76,7 +76,7 @@ public class CaffeineCacheService {
     /**
      * 更新缓存
      */
-    @CachePut(value = "userCache", key = "#userId")
+    @CachePut(value = "user_cache", key = "#userId")
     public UserDTO putUser(String userId, UserDTO userDTO) {
         return userDTO;
     }
@@ -84,7 +84,7 @@ public class CaffeineCacheService {
     /**
      * 淘汰缓存
      */
-    @CacheEvict(value = "userCache", key = "#userId")
+    @CacheEvict(value = "user_cache", key = "#userId")
     public String evictUserSync(String userId) {
         return userId;
     }
