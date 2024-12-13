@@ -86,7 +86,7 @@ l2cache:
       # 全局过期时间，单位毫秒，默认不过期
       defaultExpiration: 300000
       # 每个cacheName的过期时间，单位毫秒，优先级比defaultExpiration高
-      expires: {userCache: 300000,goodsCache: 50000}
+      expires: {user_cache: 300000,goods_cache: 50000}
       # 缓存更新时通知其他节点的topic名称 默认 cache:redis:caffeine:topic
       topic: cache:redis:caffeine:topic
 
