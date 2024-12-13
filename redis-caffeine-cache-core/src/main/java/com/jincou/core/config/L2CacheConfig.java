@@ -4,7 +4,6 @@ package com.jincou.core.config;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.springframework.boot.autoconfigure.cache.CacheType;
 import java.util.*;
 
 /**
